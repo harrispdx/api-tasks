@@ -21,6 +21,8 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
-    "tap": "^10.7.0"
+    "supertest": "^3.0.0",
+    "tap": "^10.7.0",
+    "tapromise": "^1.1.2"
   }
 }
