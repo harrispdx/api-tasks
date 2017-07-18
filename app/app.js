@@ -21,5 +21,13 @@ app.get('/:page/:nbrItems?', function (req, res) {
   }
   
 })
- 
-app.listen(3000)
+
+var main = function () {
+  app.listen(3000)
+}
+
+if (require.main === module) {
+    main();
+}
+
+module.exports = app
