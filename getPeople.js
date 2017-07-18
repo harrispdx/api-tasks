@@ -1,5 +1,5 @@
 var request = require('request')
-var urlBase = require('./config').urlBase
+var urlBase = require('./config').baseUrl
 var people = {}
 var remaining = 0
 
@@ -8,10 +8,10 @@ var parseResponse = function (error, response, body) {
   body = JSON.parse(body)
   for (var index = 0; index < body.length; index++) {
     var person = body[index];
-    people[person.Number - 1] = person
+    people[person.Number] = person
   }
   if (remaining === 0 ) {
-    console.log(people)
+    console.log(JSON.stringify(people, null, 2))
   }
 }
 

@@ -1,5 +1,5 @@
 var request = require('request')
-var urlBase = require('./config').urlBase
+var urlBase = require('./config').baseUrl
 var errorPages = []
 var remainingA = 100
 var successPages = []
