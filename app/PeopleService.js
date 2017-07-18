@@ -6,7 +6,9 @@ PeopleService.getPagedPeople = function (page, nbrItems) {
   let end = page * nbrItems
   var response = []
   for (var i = start; i <= end; i++) {
-    response.push(people[i])
+    if (people[i]) {
+      response.push(people[i])
+    }  
   }
   return response
 }
