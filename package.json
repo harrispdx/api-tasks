@@ -2,9 +2,10 @@
   "name": "api-tasks",
   "version": "1.0.0",
   "description": "",
-  "main": "errorTester.js",
+  "main": "server.js",
   "scripts": {
-    "test": "tap test/test.js"
+    "test": "tap test/test.js",
+    "start": "node app/server.js"
   },
   "repository": {
     "type": "git",
