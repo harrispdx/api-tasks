@@ -17,7 +17,7 @@ for (var index = 0; index < 100; index++) {
     }
     remainingA--
     if (remainingA === 0) {
-      errorPages.sort(function(a, b) {
+      errorPages.sort(function (a, b) {
         return a - b
       })
       console.log('This should be empty: ', errorPages)
@@ -35,7 +35,7 @@ for (var index = 0; index < 100; index++) {
     }
     remainingB--
     if (remainingB === 0) {
-      successPages.sort(function(a, b) {
+      successPages.sort(function (a, b) {
         return a - b
       })
       console.log('This should be empty: ', successPages)

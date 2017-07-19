@@ -19,7 +19,6 @@ app.get('/:page/:nbrItems?', function (req, res) {
     let response = PeopleService.getPagedPeople(page, nbrItems)
     res.status(200).send(response)
   }
-  
 })
 
 module.exports = app

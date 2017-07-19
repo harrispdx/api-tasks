@@ -8,7 +8,7 @@ PeopleService.getPagedPeople = function (page, nbrItems) {
   for (var i = start; i <= end; i++) {
     if (people[i]) {
       response.push(people[i])
-    }  
+    }
   }
   return response
 }
