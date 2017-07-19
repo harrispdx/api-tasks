@@ -1,0 +1,26 @@
+In order to recreate the endpoint, I needed to figure out what the error conditions were.  I looped through calls from 1 to 10
+and found that 3, 5, 6, 9, and 10 were invalid.  That looked to me like multiples of 3 and 5, which seemed plausible as it's
+kind of a variation on the FizzBuzz coding problem.  To test this, I iterated through all multiples of 3 and 5 to see if any returned
+successfully (they didn't) and through non-multiples of 3 or 5 to see if any caused errors (they didn't).  The code for those tests
+can be found in miscellanea/errorTester.js.  I also manually tried all the nbrItems parameters from 1-10 but none of them caused
+problems, so it looks like it's certain page numbers rather than certain page sizes that cause errors.
+
+Then, I wrote the basic idea of the endpoint including the 3s and 5s rule.  With that as a basis, I moved on to doing a bunch of manual
+testing to figure out the order in which the conditions were checked, i.e.
+/cats/dogs returns 'Invalid page requested: cats', so whether page is a number is checked before whether nbrItems is a number
+/3/cats returns 'Invalid number of items per page requested: cats' so whether nbrItems is a number is checked before the 3&5 thing
+same with 0/cats so checking for page numbers less than zero happens later as well
+/3/13 returns 'To many items requested per page: 13' so that's also checked before 3&5
+
+13/10 doesn't error, so asking for something past the end of the data is acceptable but doesn't yeild results
+
+Using the results of all of these variations, I implemented parameter checking in what I believe is the correct order.
+
+I also kind of brute-forced a bunch of calls to create an array I could store in a file with all of the entries in it.  The code
+for that is in miscellanea/getPeople.js.  It's not elegant and makes a bunch of redundant calls but I just needed to get out the data
+and in this case I prioritized speed of writing rather than efficiency of execution.
+
+Note:  There's one edge case I couldn't recreate perfectly.  I noticed that hitting //8 will cause an "Invalid page number" error.
+I think that Express normalizes URLS, so if you hit that endpoint in my app it will just treat 8 as the page number and default to 10
+items per page.  I considered adding a separate endpoint for this edge case, but it seemed like it would be better to just acknowledge
+the issue than write something really hack-y to force it to work.

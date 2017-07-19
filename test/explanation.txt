@@ -1,0 +1,10 @@
+I wrote the tests after i implemented the endpoint, so I'd already done a bunch of checking to see which conditions caused errors
+and which were successful.  When I wrote tests, I wrote them to match the various error conditions I had discovered in my investigation,
+for example, that page numbers could not be multiples of 3 or 5, and that not-a-numbers weren't valid for page or nbrItems.  
+I also made sure that it would default to 10 items per page in the event that nbrItems was not provided, and that requests for data
+items beyond the 100 provided would not error.
+
+I wrote the tests against the provided endpoint and then also configured them so that they could be run against my own endpoint to
+check for consistent behavior.  If you'd like to run the tests on my own app, just comment out line 4 and uncomment lines 6, 7, and
+124.  I used tap to write the tests, and the test script tag is present in package.json so npm test will run them (or tap test, 
+either will work).
