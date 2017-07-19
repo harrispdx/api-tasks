@@ -59,6 +59,19 @@ tap.test('Should return status 400 because page 3 is not valid', function (t) {
   })
 })
 
+tap.test('Should return status 400 because page 5 is not valid', function (t) {
+
+  t.plan(3)
+
+  url = baseUrl + '5/10'
+  request(url, function(err, response, body) {
+    t.error(err)
+    t.equals(response.statusCode, 400)
+    t.equals(response.body, 'Invalid page number requested: 5')
+    t.end()
+  })
+})
+
 tap.test('Should return status 400 because page cats is not valid', function (t) {
 
   t.plan(3)
