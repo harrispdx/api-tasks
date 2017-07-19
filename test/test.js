@@ -1,10 +1,10 @@
 const app = require('../app/app')
 const tap = require('tap')
 const request = require('request')
-// const baseUrl = require('../config').baseUrl
+const baseUrl = require('../config').baseUrl
 
-var server = app.listen(3000);
-const baseUrl = 'http://localhost:3000/'
+// var server = app.listen(3000);
+// const baseUrl = 'http://localhost:3000/'
 
 
 tap.test('Should retrieve 8 items successfully', function (t) {
@@ -108,6 +108,6 @@ tap.test('Should return status 400 because 13 is too many items', function (t) {
     t.equals(response.statusCode, 400)
     t.equals(response.body, 'To many items requested per page: 13')
     t.end()
-    server.close()
+    // server.close()
   })
 })
