@@ -1,5 +1,5 @@
 var request = require('request')
-var urlBase = require('./config').baseUrl
+var baseUrl = require('./config').baseUrl
 var errorPages = []
 var remainingA = 100
 var successPages = []
@@ -10,7 +10,7 @@ var remainingB = 100
 // Are there any pages not divisible by 3 or 5 that produce errors?
 for (var index = 0; index < 100; index++) {
   let page = index + 1
-  var url = urlBase + page + '/1'
+  var url = baseUrl + page + '/1'
   request(url, function (error, response, body) {
     if (response && response.statusCode != 200 && page % 3 != 0 && page % 5 != 0) {
       errorPages.push(page)
@@ -28,7 +28,7 @@ for (var index = 0; index < 100; index++) {
 // Are there any pages that are divisible by 3 or 5 that do not produce errors?
 for (var index = 0; index < 100; index++) {
   let page = index + 1
-  var url = urlBase + page + '/1'
+  var url = baseUrl + page + '/1'
   request(url, function (error, response, body) {
     if (response && response.statusCode === 200 && (page % 3 === 0 || page % 5 === 0)) {
       successPages.push(page)

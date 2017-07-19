@@ -1,5 +1,5 @@
 var request = require('request')
-var urlBase = require('./config').baseUrl
+var baseUrl = require('./config').baseUrl
 var people = {}
 var remaining = 0
 
@@ -18,7 +18,7 @@ var parseResponse = function (error, response, body) {
 for (var i = 1; i < 11; i++) {
   for (var j = 1; j <= (Math.ceil(100 / i)); j++) {
     if (j % 3 != 0 && j % 5 != 0) {
-      url = urlBase + j + '/' + i
+      url = baseUrl + j + '/' + i
       remaining++
       request(url, parseResponse);
     }
